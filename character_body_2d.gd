@@ -12,8 +12,6 @@ func _ready():
 
 func _process(delta):
 	walk()
-	move()
-	facing_direction()
 	move_and_slide()
 	
 	
@@ -21,15 +19,3 @@ func walk():
 	direction = Input.get_vector("left","right","up","down")
 	
 	velocity = direction * speed
-
-func move():
-	if direction != Vector2.ZERO:
-		animation_sprite.play("run")
-	elif direction == Vector2.ZERO:
-		animation_sprite.play("idle")
-
-func facing_direction():
-	if direction == Vector2.LEFT:
-		sprite.flip_h = true
-	elif direction == Vector2.RIGHT:
-		sprite.flip_h = false
