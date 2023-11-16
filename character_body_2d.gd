@@ -19,3 +19,8 @@ func walk():
 	direction = Input.get_vector("left","right","up","down")
 	
 	velocity = direction * speed
+	
+	if(direction != Vector2.ZERO):
+		animation_sprite.play("run")
+	elif (direction == Vector2.ZERO):
+		animation_sprite.play("idle")
