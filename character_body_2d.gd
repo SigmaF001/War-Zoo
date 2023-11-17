@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animation_sprite : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 
-@export var speed : float = 1000.0
+@export var speed : float = 800.0
 
 var direction : Vector2 = Vector2.ZERO
 

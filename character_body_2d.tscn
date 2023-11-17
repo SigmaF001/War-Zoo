@@ -172,7 +172,7 @@ _data = {
 }
 
 [node name="Test_Player" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_gy85k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -190,3 +190,4 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.333333, 0.333333)
+position_smoothing_enabled = true
