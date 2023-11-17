@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg463224bexfl"]
+[gd_scene load_steps=4 format=3 uid="uid://dg463224bexfl"]
 
 [ext_resource type="PackedScene" uid="uid://b6k02btq88t6b" path="res://character_body_2d.tscn" id="1_kw34s"]
 [ext_resource type="PackedScene" uid="uid://qqobcgebw8uh" path="res://Characters/Enemies/TestEnemy/enemy.tscn" id="2_gj0k3"]
+[ext_resource type="PackedScene" uid="uid://dkfqrpi83vuwn" path="res://Characters/Enemies/Goblin/goblin.tscn" id="3_wtm0u"]
 
 [node name="world" type="Node2D"]
 
@@ -10,3 +11,6 @@ position = Vector2(794, 267)
 scale = Vector2(1, 0.987201)
 
 [node name="Test_Player" parent="." instance=ExtResource("1_kw34s")]
+
+[node name="Goblin" parent="." instance=ExtResource("3_wtm0u")]
+position = Vector2(430, 33)
