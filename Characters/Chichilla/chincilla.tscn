@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=20 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Texture2D" uid="uid://ckfrwws3l3ptd" path="res://Asset/Chinchilla/Chihilla_walk.png" id="1_pbrsy"]
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
 [ext_resource type="Texture2D" uid="uid://3f6o35ryb60g" path="res://Asset/Chinchilla/ยืนนิ่งหันซ้าย (chichilla)1.png" id="2_b5o8x"]
 [ext_resource type="Texture2D" uid="uid://dd8ka3nrkmf3x" path="res://Asset/Chinchilla/Chicilla_walk_down.png" id="4_6r0x3"]
 [ext_resource type="Texture2D" uid="uid://vyhjya20q8yt" path="res://Asset/Chinchilla/ยืนนิ่ง (chinchilla)1.png" id="5_pjc2f"]
+[ext_resource type="Texture2D" uid="uid://cafelqddqgu03" path="res://Asset/Chinchilla/ยืนนิ่งหลัง (chichilla).png" id="6_po4ky"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2y50e"]
 radius = 9.0
@@ -35,6 +36,46 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kmmbj"]
+resource_name = "idle_down"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_pjc2f")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -102,6 +143,46 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("5_pjc2f")]
+}
+
+[sub_resource type="Animation" id="Animation_5u3a7"]
+resource_name = "idle_up"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_po4ky")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_08xod"]
@@ -186,20 +267,66 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_2sdos"]
+resource_name = "walk_up"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_6r0x3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8d0c"]
 _data = {
 "RESET": SubResource("Animation_pat0n"),
+"idle_down": SubResource("Animation_kmmbj"),
 "idle_side": SubResource("Animation_cqeth"),
 "idle_straight": SubResource("Animation_pnc2r"),
+"idle_up": SubResource("Animation_5u3a7"),
 "walk_down": SubResource("Animation_08xod"),
-"walk_side": SubResource("Animation_0481d")
+"walk_side": SubResource("Animation_0481d"),
+"walk_up": SubResource("Animation_2sdos")
 }
 
-[sub_resource type="GDScript" id="GDScript_1llif"]
-script/source = "extends Node
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_371m1"]
 
-@export var player : CharacterBody2D
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfxe6"]
+bg_color = Color(0.309804, 0.694118, 0.407843, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
+height = 39.0
 
 [node name="Chincilla" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -218,7 +345,22 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.986334, 1)
 
-[node name="Position" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = SubResource("GDScript_1llif")
-player = NodePath("..")
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -284.0
+offset_top = -159.0
+offset_right = -147.0
+offset_bottom = -143.0
+theme_override_styles/background = SubResource("StyleBoxFlat_371m1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rfxe6")
+step = 1.0
+show_percentage = false
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_cgm0p")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

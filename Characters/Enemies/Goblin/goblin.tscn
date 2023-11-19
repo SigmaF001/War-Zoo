@@ -136,10 +136,10 @@ _data = {
 "run": SubResource("Animation_yeiki")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2umes"]
-radius = 115.403
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te1pg"]
+size = Vector2(12.4, 33.4)
 
-[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("goblin")]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("goblin") groups=["Goblin"]]
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_y1m4m")
 goblin = NodePath(".")
@@ -157,8 +157,10 @@ libraries = {
 "": SubResource("AnimationLibrary_xrr0b")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.66667, 10.6667)
-shape = SubResource("CircleShape2D_2umes")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(11.6, 8.8)
+shape = SubResource("RectangleShape2D_te1pg")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
