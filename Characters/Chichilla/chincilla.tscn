@@ -348,6 +348,7 @@ libraries = {
 scale = Vector2(0.986334, 1)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 5
 offset_left = -284.0
 offset_top = -159.0
 offset_right = -147.0

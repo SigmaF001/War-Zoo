@@ -3,9 +3,9 @@ extends Node2D
 @export var spawns : Array[Spawn_info] = []
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var player_character = $"../Chincilla"
 
 var time = 0
-
 
 func _on_timer_timeout():
 	time += 1
@@ -30,3 +30,25 @@ func get_random_position():
 	var top_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y - vpr.y/2)
 	var bottom_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y + vpr.y/2)
 	var bottom_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y - vpr.y/2)
+	var pos_side = ["left", "right", "up", "down"].pick_random()
+	var spawn_pos1 = Vector2.ZERO
+	var spawn_pos2 = Vector2.ZERO
+	
+	match  pos_side:
+		"left":
+			spawn_pos1 = top_left
+			spawn_pos2 = bottom_left
+		"right":
+			spawn_pos1 = top_right
+			spawn_pos2 = bottom_right
+		"up":
+			spawn_pos1 = top_left
+			spawn_pos2 = top_right
+		"down":
+			spawn_pos1 = bottom_left
+			spawn_pos1 = bottom_right
+			
+	var x_spawn = randf_range(spawn_pos1.x, spawn_pos2.x)
+	var y_spawn = randf_range(spawn_pos1.y, spawn_pos2.y)
+	print("1")
+	return Vector2(x_spawn, y_spawn)
