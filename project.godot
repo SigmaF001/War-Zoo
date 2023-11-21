@@ -44,6 +44,10 @@ down={
 
 [layer_names]
 
+2d_render/layer_1="Player"
+2d_render/layer_2="Enemy"
+2d_render/layer_3="Malee_attack"
+2d_render/layer_4="Projectile_attack"
 2d_render/layer_6="SoftCollision"
 2d_physics/layer_6="SoftCollision"
 

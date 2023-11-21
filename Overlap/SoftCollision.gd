@@ -1,12 +1,4 @@
 extends Area2D
-
-func _process(delta):
-	is_colliding()
-	get_push_vector()
-
-func is_colliding():
-	var areas = get_overlapping_areas()
-	return areas.size() > 0
 	
 func get_push_vector():
 	var areas = get_overlapping_areas()
@@ -17,3 +9,7 @@ func get_push_vector():
 		push_vector = area.global_position.direction_to(global_position).rotated(random_dir_change * PI/4)
 		push_vector = push_vector.normalized()
 	return push_vector
+
+func is_colliding():
+	var areas = get_overlapping_areas()
+	return areas.size() > 0

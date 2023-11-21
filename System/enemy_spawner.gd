@@ -50,5 +50,5 @@ func get_random_position():
 			
 	var x_spawn = randf_range(spawn_pos1.x, spawn_pos2.x)
 	var y_spawn = randf_range(spawn_pos1.y, spawn_pos2.y)
-	print("1")
+	print("Enemy spawn.")
 	return Vector2(x_spawn, y_spawn)

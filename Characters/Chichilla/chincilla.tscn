@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=19 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Texture2D" uid="uid://ckfrwws3l3ptd" path="res://Asset/Chinchilla/Chihilla_walk.png" id="1_pbrsy"]
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd8ka3nrkmf3x" path="res://Asset/Chinchilla/Chicilla_walk_down.png" id="4_6r0x3"]
 [ext_resource type="Texture2D" uid="uid://vyhjya20q8yt" path="res://Asset/Chinchilla/ยืนนิ่ง (chinchilla)1.png" id="5_pjc2f"]
 [ext_resource type="Texture2D" uid="uid://cafelqddqgu03" path="res://Asset/Chinchilla/ยืนนิ่งหลัง (chichilla).png" id="6_po4ky"]
+[ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="7_15y1s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2y50e"]
 radius = 9.0
@@ -320,11 +321,6 @@ _data = {
 "walk_up": SubResource("Animation_2sdos")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_371m1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfxe6"]
-bg_color = Color(0.309804, 0.694118, 0.407843, 1)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
 height = 39.0
 
@@ -347,20 +343,12 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.986334, 1)
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-z_index = 5
-offset_left = -284.0
-offset_top = -159.0
-offset_right = -147.0
-offset_bottom = -143.0
-theme_override_styles/background = SubResource("StyleBoxFlat_371m1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_rfxe6")
-step = 1.0
-show_percentage = false
+[node name="HealthBar" parent="." instance=ExtResource("7_15y1s")]
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visibility_layer = 3
 shape = SubResource("CapsuleShape2D_cgm0p")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

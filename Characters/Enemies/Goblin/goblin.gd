@@ -4,26 +4,29 @@ extends CharacterBody2D
 @onready var goblin_sprite : Sprite2D = $Sprite2D
 @onready var player_character = get_parent().get_parent().get_node("Chincilla")
 @onready var SoftCollision = $SoftCollision
+@onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 
 @export var atk_damage : float = 15.0
 @export var goblin : CharacterBody2D
 @export var speed : float = 3
+@export var acceleration = 2
 
 var player = null
 var player_chase = false
+var knockback = Vector2.ZERO
 
 func _ready():
 	animation.play("run")
 
 func _physics_process(delta):
-	if SoftCollision.is_colliding():
-		velocity += SoftCollision.get_push_vector() * delta * 1000
-	
 #	if player_chase:
 #		position += (player_character.position - position) / speed
 	var direction : Vector2 = (player_character.global_position - global_position).normalized()
+	velocity = direction * speed
 	
-	move_and_collide(direction * speed)
+	if SoftCollision.is_colliding():
+		velocity += SoftCollision.get_push_vector() * delta * 200
+	move_and_collide(velocity)
 	
 	facing_direction()
 
