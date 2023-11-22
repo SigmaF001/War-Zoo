@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var animation_sprite : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var malee_range = $MaleeAtk/CollisionShape2D
 
 var max_health = 100
 var health = max_health
@@ -52,8 +53,10 @@ func animation_movement():
 func facing_direction():
 	if (direction == Vector2.LEFT):
 		sprite.flip_h = false
+		malee_range.position.x = -18
 	if (direction == Vector2.RIGHT):
 		sprite.flip_h = true
+		malee_range.position.x = 18
 	if (direction == Vector2.DOWN and Vector2.ZERO):
 		animation_sprite.play("idle_down")
 		sprite.flip_h = false

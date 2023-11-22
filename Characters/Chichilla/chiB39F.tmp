@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=21 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Texture2D" uid="uid://ckfrwws3l3ptd" path="res://Asset/Chinchilla/Chihilla_walk.png" id="1_pbrsy"]
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://vyhjya20q8yt" path="res://Asset/Chinchilla/ยืนนิ่ง (chinchilla)1.png" id="5_pjc2f"]
 [ext_resource type="Texture2D" uid="uid://cafelqddqgu03" path="res://Asset/Chinchilla/ยืนนิ่งหลัง (chichilla).png" id="6_po4ky"]
 [ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="7_15y1s"]
-[ext_resource type="PackedScene" uid="uid://r8mdnfhxruic" path="res://System/Combat/malee_atk.tscn" id="8_08q0x"]
+[ext_resource type="PackedScene" uid="uid://b1l7xb75fomh6" path="res://System/Combat/malee.tscn" id="8_37hk7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2y50e"]
 radius = 9.0
@@ -325,10 +325,12 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
 height = 39.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6ijf"]
+size = Vector2(20, 41)
+
 [node name="Chincilla" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_wegq6")
-metadata/_edit_horizontal_guides_ = [-197.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pbrsy")
@@ -353,10 +355,13 @@ scale = Vector2(0.986334, 1)
 visibility_layer = 3
 shape = SubResource("CapsuleShape2D_cgm0p")
 
-[node name="MaleeAtk" parent="." instance=ExtResource("8_08q0x")]
+[node name="Malee" parent="." instance=ExtResource("8_37hk7")]
+
+[node name="CollisionShape2D" parent="Malee/MaleeArea" index="0"]
+position = Vector2(-13, -0.5)
+shape = SubResource("RectangleShape2D_v6ijf")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
-[connection signal="area_entered" from="MaleeAtk" to="MaleeAtk" method="_on_area_entered"]
 
-[editable path="MaleeAtk"]
+[editable path="Malee"]

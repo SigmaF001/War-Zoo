@@ -14,6 +14,8 @@ extends CharacterBody2D
 var player = null
 var player_chase = false
 var knockback = Vector2.ZERO
+var max_health = 50
+var health = max_health
 
 func _ready():
 	animation.play("run")
