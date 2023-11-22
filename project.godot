@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EnemySpawner="*res://System/enemy_spawner.gd"
+PlayerAtk="*res://System/Combat/PlayerATK.gd"
 
 [input]
 
