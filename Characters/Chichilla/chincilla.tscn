@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=22 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Texture2D" uid="uid://ckfrwws3l3ptd" path="res://Asset/Chinchilla/Chihilla_walk.png" id="1_pbrsy"]
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
@@ -325,6 +325,14 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
 height = 39.0
 
+[sub_resource type="Animation" id="Animation_aiex0"]
+resource_name = "malee_attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppmkn"]
+_data = {
+"malee_attack": SubResource("Animation_aiex0")
+}
+
 [node name="Chincilla" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_wegq6")
@@ -356,6 +364,11 @@ shape = SubResource("CapsuleShape2D_cgm0p")
 [node name="CollisionShape2D" parent="MaleeAtk" index="0"]
 position = Vector2(18, 0)
 disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MaleeAtk"]
+libraries = {
+"": SubResource("AnimationLibrary_ppmkn")
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
