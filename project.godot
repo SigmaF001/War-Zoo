@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EnemySpawner="*res://System/enemy_spawner.gd"
 PlayerAtk="*res://System/Combat/PlayerATK.gd"
+AttackSignal="*res://System/Combat/Attack_Signal.gd"
 
 [input]
 

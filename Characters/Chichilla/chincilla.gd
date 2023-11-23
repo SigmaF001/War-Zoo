@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var animation_sprite : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var malee_range = $MaleeAtk/CollisionShape2D
+@onready var health_bar = $UI/HealthBar
 
 var max_health = 100
 var health = max_health
@@ -17,11 +18,11 @@ var direction : Vector2 = Vector2.ZERO
 
 func _ready():
 	animation_sprite.play("idle_side")
-	$HealthBar.max_value = max_health
+	health_bar.max_value = max_health
 	set_health_bar()
 
 func set_health_bar():
-	$HealthBar.value = health
+	health_bar.value = health
 
 func handle_input():
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -35,6 +36,7 @@ func _process(delta):
 	facing_direction()
 	set_health_bar()
 	enemy_attack()
+	player_attack()
 
 
 func animation_movement():
@@ -53,10 +55,8 @@ func animation_movement():
 func facing_direction():
 	if (direction == Vector2.LEFT):
 		sprite.flip_h = false
-		malee_range.position.x = -18
 	if (direction == Vector2.RIGHT):
 		sprite.flip_h = true
-		malee_range.position.x = 18
 	if (direction == Vector2.DOWN and Vector2.ZERO):
 		animation_sprite.play("idle_down")
 		sprite.flip_h = false
@@ -81,3 +81,12 @@ func enemy_attack():
 func player_dead():
 	if health == 0:
 		player_alive = false
+
+func player_attack():
+	if Input.is_action_just_pressed("attack"):
+		malee_range.disabled = false
+		$Timer.start()
+
+
+func _on_timer_timeout():
+	malee_range.disabled = true

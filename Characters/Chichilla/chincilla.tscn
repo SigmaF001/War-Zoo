@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd8ka3nrkmf3x" path="res://Asset/Chinchilla/Chicilla_walk_down.png" id="4_6r0x3"]
 [ext_resource type="Texture2D" uid="uid://vyhjya20q8yt" path="res://Asset/Chinchilla/ยืนนิ่ง (chinchilla)1.png" id="5_pjc2f"]
 [ext_resource type="Texture2D" uid="uid://cafelqddqgu03" path="res://Asset/Chinchilla/ยืนนิ่งหลัง (chichilla).png" id="6_po4ky"]
-[ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="7_15y1s"]
+[ext_resource type="PackedScene" uid="uid://caju51ksgt2q0" path="res://System/UI/ui.tscn" id="7_glntq"]
 [ext_resource type="PackedScene" uid="uid://r8mdnfhxruic" path="res://System/Combat/malee_atk.tscn" id="8_08q0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2y50e"]
@@ -345,8 +345,6 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.986334, 1)
 
-[node name="HealthBar" parent="." instance=ExtResource("7_15y1s")]
-
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -355,8 +353,19 @@ shape = SubResource("CapsuleShape2D_cgm0p")
 
 [node name="MaleeAtk" parent="." instance=ExtResource("8_08q0x")]
 
+[node name="CollisionShape2D" parent="MaleeAtk" index="0"]
+position = Vector2(18, 0)
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="UI" parent="." instance=ExtResource("7_glntq")]
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="area_entered" from="MaleeAtk" to="MaleeAtk" method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="MaleeAtk"]
+[editable path="UI"]
