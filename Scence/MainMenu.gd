@@ -1,9 +1,10 @@
-extends Node2D
+extends Control
 
-func _on_new_game_pressed():
+
+
+func _on_start_game_pressed():
 	get_tree().change_scene_to_file("res://world.tscn")
-	
 
 
-func _on_exit_pressed():
+func _on_quit_pressed():
 	get_tree().quit()
