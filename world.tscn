@@ -2876,6 +2876,7 @@ sources/2 = SubResource("TileSetAtlasSource_fox3k")
 sources/3 = SubResource("TileSetAtlasSource_pc7k8")
 
 [node name="world" type="Node2D"]
+process_mode = 1
 
 [node name="Chincilla" parent="." groups=["player"] instance=ExtResource("4_2dt1j")]
 

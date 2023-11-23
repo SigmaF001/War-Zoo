@@ -169,7 +169,9 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=["GoblinATK"]]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(11.6, 8.8)
 shape = SubResource("RectangleShape2D_te1pg")
 

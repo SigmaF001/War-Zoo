@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvnl3cl6brqra"]
+
+[ext_resource type="Script" path="res://Scence/game.gd" id="1_vlufh"]
+[ext_resource type="PackedScene" uid="uid://dg463224bexfl" path="res://world.tscn" id="1_x1p1i"]
+[ext_resource type="PackedScene" uid="uid://bfu6802pweabs" path="res://Scence/pause_menu.tscn" id="2_xw7vu"]
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_vlufh")
+
+[node name="world" parent="." instance=ExtResource("1_x1p1i")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_xw7vu")]
