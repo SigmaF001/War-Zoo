@@ -26,7 +26,8 @@ var player_dead : bool = false:
 
 func _input(event : InputEvent):
 	if (event.is_action_pressed("esc")):
-		game_paused = !game_paused
+		if (player_dead == false):
+			game_paused = !game_paused
 		
 func when_player_dead():
 	player_dead = !player_dead
@@ -38,11 +39,6 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	get_tree().change_scene_to_file("res://Scence/main_menu.tscn")
 	game_paused = !game_paused
-
-
-func _on_play_again_pressed():
-	get_tree().change_scene_to_file("res://Scence/main_menu.tscn")
-	player_dead = !player_dead
 
 
 func _on_quit_from_died_pressed():

@@ -1,19 +1,56 @@
-[gd_scene load_steps=22 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=12 format=3 uid="uid://t5m3mxglm31b"]
 
-[ext_resource type="Texture2D" uid="uid://ckfrwws3l3ptd" path="res://Asset/Chinchilla/Chihilla_walk.png" id="1_pbrsy"]
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
-[ext_resource type="Texture2D" uid="uid://3f6o35ryb60g" path="res://Asset/Chinchilla/ยืนนิ่งหันซ้าย (chichilla)1.png" id="2_b5o8x"]
-[ext_resource type="Texture2D" uid="uid://dd8ka3nrkmf3x" path="res://Asset/Chinchilla/Chicilla_walk_down.png" id="4_6r0x3"]
-[ext_resource type="Texture2D" uid="uid://vyhjya20q8yt" path="res://Asset/Chinchilla/ยืนนิ่ง (chinchilla)1.png" id="5_pjc2f"]
-[ext_resource type="Texture2D" uid="uid://cafelqddqgu03" path="res://Asset/Chinchilla/ยืนนิ่งหลัง (chichilla).png" id="6_po4ky"]
+[ext_resource type="Texture2D" uid="uid://ietfbis60ogi" path="res://Asset/Chinchilla/chichillaori-Sheet.png" id="2_lt44m"]
 [ext_resource type="PackedScene" uid="uid://caju51ksgt2q0" path="res://System/UI/ui.tscn" id="7_glntq"]
 [ext_resource type="PackedScene" uid="uid://r8mdnfhxruic" path="res://System/Combat/malee_atk.tscn" id="8_08q0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2y50e"]
-radius = 9.0
-height = 38.0
+radius = 97.5
+height = 250.0
 
-[sub_resource type="Animation" id="Animation_pat0n"]
+[sub_resource type="Animation" id="Animation_8wi5h"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_lt44m")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_1a8ka"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -25,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_pbrsy")]
+"values": [ExtResource("2_lt44m")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -37,7 +74,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [6]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -50,280 +87,17 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_kmmbj"]
-resource_name = "idle_down"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_pjc2f")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_cqeth"]
-resource_name = "idle_side"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_b5o8x")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_pnc2r"]
-resource_name = "idle_straight"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_pjc2f")]
-}
-
-[sub_resource type="Animation" id="Animation_5u3a7"]
-resource_name = "idle_up"
-length = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_po4ky")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_08xod"]
-resource_name = "walk_down"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_6r0x3")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_0481d"]
-resource_name = "walk_side"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_pbrsy")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_2sdos"]
-resource_name = "walk_up"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_6r0x3")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8d0c"]
 _data = {
-"RESET": SubResource("Animation_pat0n"),
-"idle_down": SubResource("Animation_kmmbj"),
-"idle_side": SubResource("Animation_cqeth"),
-"idle_straight": SubResource("Animation_pnc2r"),
-"idle_up": SubResource("Animation_5u3a7"),
-"walk_down": SubResource("Animation_08xod"),
-"walk_side": SubResource("Animation_0481d"),
-"walk_up": SubResource("Animation_2sdos")
+"RESET": SubResource("Animation_1a8ka"),
+"run": SubResource("Animation_8wi5h")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
-height = 39.0
+radius = 102.5
+height = 260.0
 
 [sub_resource type="Animation" id="Animation_aiex0"]
 resource_name = "malee_attack"
@@ -334,15 +108,17 @@ _data = {
 }
 
 [node name="Chincilla" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_wegq6")
 metadata/_edit_horizontal_guides_ = [-197.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_pbrsy")
-hframes = 4
+texture = ExtResource("2_lt44m")
+flip_h = true
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -10)
 shape = SubResource("CapsuleShape2D_2y50e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -354,15 +130,18 @@ libraries = {
 scale = Vector2(0.986334, 1)
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visibility_layer = 3
+position = Vector2(10, -7.5)
 shape = SubResource("CapsuleShape2D_cgm0p")
 
 [node name="MaleeAtk" parent="." instance=ExtResource("8_08q0x")]
 
 [node name="CollisionShape2D" parent="MaleeAtk" index="0"]
-position = Vector2(18, 0)
+position = Vector2(120, 9.53674e-06)
+scale = Vector2(1, 1)
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MaleeAtk"]

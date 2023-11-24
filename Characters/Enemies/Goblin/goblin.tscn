@@ -149,7 +149,7 @@ radius = 23.816
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("goblin") groups=["Goblin"]]
 light_mask = 2
 visibility_layer = 3
-scale = Vector2(2.5, 2.5)
+scale = Vector2(4, 4)
 script = ExtResource("1_y1m4m")
 goblin = NodePath(".")
 

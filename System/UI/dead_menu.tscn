@@ -33,11 +33,6 @@ theme_override_font_sizes/font_size = 111
 text = "Died"
 horizontal_alignment = 1
 
-[node name="PlayAgain" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 51
-text = "Play Again"
-
 [node name="QuitFromDied" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 51

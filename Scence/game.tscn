@@ -12,7 +12,11 @@ script = ExtResource("1_ynvg5")
 [node name="world" parent="." instance=ExtResource("1_x1p1i")]
 
 [node name="Camera2D" parent="world/Chincilla" index="3"]
+scale = Vector2(1, 1)
 limit_right = 2158
+
+[node name="CollisionShape2D" parent="world/Chincilla/MaleeAtk" index="0"]
+position = Vector2(120, -2.5)
 
 [node name="PausedMenuCanva" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_qou3q")]
 visible = false
@@ -27,7 +31,6 @@ game_manager = NodePath("..")
 
 [connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="DeadMenu/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="DeadMenu/VBoxContainer/QuitFromDied" to="." method="_on_quit_from_died_pressed"]
 
 [editable path="world"]
