@@ -4,7 +4,6 @@
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,14 +38,17 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 111
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 51
 text = "Resume"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 51
 text = "Quit
 "

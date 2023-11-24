@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var malee_range = $MaleeAtk/CollisionShape2D
 @onready var health_bar = $UI/HealthBar
 
-var max_health = 100
+var max_health = 150
 var health = max_health
 
 var enemy_attack_rang = false
@@ -37,6 +37,7 @@ func _process(delta):
 	set_health_bar()
 	enemy_attack()
 	player_attack()
+	player_dead()
 
 
 func animation_movement():
@@ -80,7 +81,8 @@ func enemy_attack():
 
 func player_dead():
 	if health == 0:
-		player_alive = false
+		PlayerDead.emit_signal("PlayerDead")
+		
 
 func player_attack():
 	if Input.is_action_just_pressed("attack"):

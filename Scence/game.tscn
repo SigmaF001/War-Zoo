@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvnl3cl6brqra"]
+[gd_scene load_steps=5 format=3 uid="uid://cvnl3cl6brqra"]
 
 [ext_resource type="PackedScene" uid="uid://dg463224bexfl" path="res://world.tscn" id="1_x1p1i"]
 [ext_resource type="Script" path="res://Scence/game_manager.gd" id="1_ynvg5"]
 [ext_resource type="PackedScene" uid="uid://yhwy86pnglwa" path="res://System/UI/paused_menu_canva.tscn" id="3_qou3q"]
+[ext_resource type="PackedScene" uid="uid://cm5pt6sxyy1s6" path="res://System/UI/dead_menu.tscn" id="4_cil80"]
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -14,13 +15,24 @@ script = ExtResource("1_ynvg5")
 limit_right = 2158
 
 [node name="PausedMenuCanva" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_qou3q")]
+visible = false
+game_manager = NodePath("..")
+
+[node name="Label" parent="PausedMenuCanva/VBoxContainer" index="0"]
+theme_override_font_sizes/font_size = 40
+
+[node name="DeadMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("4_cil80")]
+visible = false
 game_manager = NodePath("..")
 
 [connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="DeadMenu/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="DeadMenu/VBoxContainer/QuitFromDied" to="." method="_on_quit_from_died_pressed"]
 
 [editable path="world"]
 [editable path="world/Chincilla"]
 [editable path="world/Chincilla/MaleeAtk"]
 [editable path="world/Chincilla/UI"]
 [editable path="PausedMenuCanva"]
+[editable path="DeadMenu"]
