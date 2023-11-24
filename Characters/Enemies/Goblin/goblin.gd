@@ -48,3 +48,6 @@ func _on_hitbox_body_entered(body):
 func _on_find_player_body_entered(body):
 	player = player_character
 	player_chase = true
+
+func dying():
+	get_parent().queue_free()

@@ -10,5 +10,17 @@ script = ExtResource("1_ynvg5")
 
 [node name="world" parent="." instance=ExtResource("1_x1p1i")]
 
+[node name="Camera2D" parent="world/Chincilla" index="3"]
+limit_right = 2158
+
 [node name="PausedMenuCanva" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_qou3q")]
 game_manager = NodePath("..")
+
+[connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="world"]
+[editable path="world/Chincilla"]
+[editable path="world/Chincilla/MaleeAtk"]
+[editable path="world/Chincilla/UI"]
+[editable path="PausedMenuCanva"]

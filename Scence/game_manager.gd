@@ -16,3 +16,13 @@ func _input(event : InputEvent):
 	if (event.is_action_pressed("esc")):
 		game_paused = !game_paused
 		
+
+
+func _on_resume_pressed():
+	game_paused = !game_paused
+	
+
+
+func _on_quit_pressed():
+	get_tree().change_scene_to_file("res://Scence/main_menu.tscn")
+	game_paused = !game_paused
