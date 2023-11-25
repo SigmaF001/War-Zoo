@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b6lkean2vqgnx"]
+
+[node name="ManaBar" type="ProgressBar"]
+offset_left = 18.0
+offset_top = 59.0
+offset_right = 299.0
+offset_bottom = 92.0
+step = 1.0
+show_percentage = false

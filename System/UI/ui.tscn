@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://caju51ksgt2q0"]
+[gd_scene load_steps=8 format=3 uid="uid://caju51ksgt2q0"]
 
 [ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="1_8bw3b"]
+[ext_resource type="Texture2D" uid="uid://q5q8p4vtrxlu" path="res://Asset/UI/1494.jpg" id="2_0cp13"]
+[ext_resource type="PackedScene" uid="uid://b6lkean2vqgnx" path="res://System/UI/mana_bar.tscn" id="2_g32km"]
+[ext_resource type="Texture2D" uid="uid://cxdiygg4ahk4v" path="res://Asset/UI/1495.jpg" id="3_hly2d"]
+[ext_resource type="Texture2D" uid="uid://dk353dtxg2d5" path="res://Asset/UI/1492.jpg" id="4_pu40w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08j8q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oicm"]
+bg_color = Color(0.101961, 0.662745, 0.807843, 1)
 
 [node name="UI" type="CanvasLayer"]
 
@@ -9,3 +18,22 @@ offset_left = 17.0
 offset_top = 17.0
 offset_right = 358.0
 offset_bottom = 51.0
+
+[node name="ManaBar" parent="." instance=ExtResource("2_g32km")]
+theme_override_styles/background = SubResource("StyleBoxFlat_08j8q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4oicm")
+
+[node name="Superpunch" type="Sprite2D" parent="."]
+position = Vector2(132, 599)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_0cp13")
+
+[node name="AGIBoost" type="Sprite2D" parent="."]
+position = Vector2(207, 599)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_hly2d")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+position = Vector2(281, 599)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_pu40w")

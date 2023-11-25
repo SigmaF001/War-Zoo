@@ -6,11 +6,16 @@ extends CharacterBody2D
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var malee_range = $MaleeAtk/CollisionShape2D
 @onready var health_bar = $UI/HealthBar
+@onready var mana_bar = $UI/ManaBar
 @onready var collision_sprite = $CollisionShape2D
 @onready var collision_hitbox = $Hitbox/CollisionShape2D
+@onready var attack_animation = $MaleeAtk/AnimationPlayer
 
 var max_health = 400
 var health = max_health
+
+var max_mana = 100
+var mana = 0
 
 var enemy_attack_rang = false
 var enemy_attack_cooldown = true
@@ -20,11 +25,17 @@ var direction : Vector2 = Vector2.ZERO
 
 func _ready():
 	animation_sprite.play("idle_side")
+	attack_animation.play("none")
 	health_bar.max_value = max_health
+	mana_bar.max_value = max_mana
 	set_health_bar()
+	set_mana_bar()
 
 func set_health_bar():
 	health_bar.value = health
+
+func set_mana_bar():
+	mana_bar.value = mana
 
 func handle_input():
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -40,6 +51,8 @@ func _process(delta):
 	enemy_attack()
 	player_attack()
 	player_dead()
+	charge_mana()
+	set_mana_bar()
 
 
 func animation_movement():
@@ -74,13 +87,20 @@ func player_dead():
 	if health == 0:
 		PlayerDead.emit_signal("PlayerDead")
 		
+func charge_mana():
+	if Input.is_action_pressed("charge"):
+		velocity = Vector2.ZERO
+		mana += 0.05
+		
 
 func player_attack():
 	if Input.is_action_just_pressed("attack"):
 		AttackSignal.emit_signal("Player_Attack")
 		malee_range.disabled = false
+		attack_animation.play("claws_attack")
 		$Timer.start()
 
 
 func _on_timer_timeout():
 	malee_range.disabled = true
+	attack_animation.play("none")

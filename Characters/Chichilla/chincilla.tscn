@@ -1,13 +1,53 @@
-[gd_scene load_steps=12 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=15 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
 [ext_resource type="Texture2D" uid="uid://ietfbis60ogi" path="res://Asset/Chinchilla/chichillaori-Sheet.png" id="2_lt44m"]
+[ext_resource type="Texture2D" uid="uid://c8nr7tbtj0mnq" path="res://Asset/Combat/Claw.png" id="4_3sx8m"]
 [ext_resource type="PackedScene" uid="uid://caju51ksgt2q0" path="res://System/UI/ui.tscn" id="7_glntq"]
 [ext_resource type="PackedScene" uid="uid://r8mdnfhxruic" path="res://System/Combat/malee_atk.tscn" id="8_08q0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2y50e"]
 radius = 97.5
 height = 250.0
+
+[sub_resource type="Animation" id="Animation_1a8ka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_lt44m")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_8wi5h"]
 resource_name = "run"
@@ -50,8 +90,18 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_1a8ka"]
-length = 0.001
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8d0c"]
+_data = {
+"RESET": SubResource("Animation_1a8ka"),
+"run": SubResource("Animation_8wi5h")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
+radius = 102.5
+height = 260.0
+
+[sub_resource type="Animation" id="Animation_rvwov"]
+resource_name = "claws_attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +112,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_lt44m")]
+"values": [ExtResource("4_3sx8m")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,7 +124,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -89,22 +139,65 @@ tracks/2/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8d0c"]
-_data = {
-"RESET": SubResource("Animation_1a8ka"),
-"run": SubResource("Animation_8wi5h")
+[sub_resource type="Animation" id="Animation_77ney"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3sx8m")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgm0p"]
-radius = 102.5
-height = 260.0
-
-[sub_resource type="Animation" id="Animation_aiex0"]
-resource_name = "malee_attack"
+[sub_resource type="Animation" id="Animation_65m45"]
+resource_name = "none"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ppmkn"]
 _data = {
-"malee_attack": SubResource("Animation_aiex0")
+"RESET": SubResource("Animation_77ney"),
+"claws_attack": SubResource("Animation_rvwov"),
+"none": SubResource("Animation_65m45")
 }
 
 [node name="Chincilla" type="CharacterBody2D"]
@@ -131,6 +224,7 @@ scale = Vector2(0.986334, 1)
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visibility_layer = 3
@@ -140,7 +234,7 @@ shape = SubResource("CapsuleShape2D_cgm0p")
 [node name="MaleeAtk" parent="." instance=ExtResource("8_08q0x")]
 
 [node name="CollisionShape2D" parent="MaleeAtk" index="0"]
-position = Vector2(120, 9.53674e-06)
+position = Vector2(131.375, -18.75)
 scale = Vector2(1, 1)
 disabled = true
 
@@ -148,6 +242,11 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_ppmkn")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="MaleeAtk"]
+position = Vector2(135, -12.5)
+scale = Vector2(1.7226, 2.39041)
+texture = ExtResource("4_3sx8m")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
