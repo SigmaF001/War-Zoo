@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvnl3cl6brqra"]
+[gd_scene load_steps=6 format=3 uid="uid://cvnl3cl6brqra"]
 
 [ext_resource type="PackedScene" uid="uid://dg463224bexfl" path="res://world.tscn" id="1_x1p1i"]
 [ext_resource type="Script" path="res://Scence/game_manager.gd" id="1_ynvg5"]
 [ext_resource type="PackedScene" uid="uid://yhwy86pnglwa" path="res://System/UI/paused_menu_canva.tscn" id="3_qou3q"]
 [ext_resource type="PackedScene" uid="uid://cm5pt6sxyy1s6" path="res://System/UI/dead_menu.tscn" id="4_cil80"]
+[ext_resource type="AudioStream" uid="uid://bgfnxshmsgy66" path="res://Asset/Sounds/start-the-engine-21180.mp3" id="5_xo7k8"]
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
@@ -12,6 +13,7 @@ script = ExtResource("1_ynvg5")
 [node name="world" parent="." instance=ExtResource("1_x1p1i")]
 
 [node name="Camera2D" parent="world/Chincilla" index="3"]
+scale = Vector2(1, 1)
 limit_right = 2158
 
 [node name="CollisionShape2D" parent="world/Chincilla/MaleeAtk" index="0"]
@@ -30,6 +32,11 @@ theme_override_font_sizes/font_size = 40
 [node name="DeadMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("4_cil80")]
 visible = false
 game_manager = NodePath("..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xo7k8")
+volume_db = -30.0
+autoplay = true
 
 [connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausedMenuCanva/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

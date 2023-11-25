@@ -21,6 +21,7 @@ var enemy_attack_rang = false
 var enemy_attack_cooldown = true
 var player_alive = true
 var blackpanther_attack = false
+var attack_cooldown = false
 
 var direction : Vector2 = Vector2.ZERO
 
@@ -100,11 +101,14 @@ func charge_mana():
 		
 
 func player_attack():
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
+		$Claw.play()
 		AttackSignal.emit_signal("Player_Attack")
 		malee_range.disabled = false
 		attack_animation.play("claws_attack")
-		$Timer.start()
+		$Attack.start()
+		$Cooldown.start()
+		attack_cooldown = true
 
 
 func _on_timer_timeout():
@@ -128,3 +132,7 @@ func _on_hitbox_area_exited(area):
 
 func _on_malee_atk_body_entered(body):
 	pass
+
+
+func _on_cooldown_timeout():
+	attack_cooldown = false

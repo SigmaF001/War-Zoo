@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=18 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
 [ext_resource type="Texture2D" uid="uid://ietfbis60ogi" path="res://Asset/Chinchilla/chichillaori-Sheet.png" id="2_lt44m"]
 [ext_resource type="Texture2D" uid="uid://c8nr7tbtj0mnq" path="res://Asset/Combat/Claw.png" id="4_3sx8m"]
+[ext_resource type="AudioStream" uid="uid://bpqkjgaeshfu3" path="res://Asset/Sounds/knife-slice-41231.mp3" id="6_0yb4c"]
 [ext_resource type="PackedScene" uid="uid://caju51ksgt2q0" path="res://System/UI/ui.tscn" id="7_glntq"]
 [ext_resource type="PackedScene" uid="uid://r8mdnfhxruic" path="res://System/Combat/malee_atk.tscn" id="8_08q0x"]
 
@@ -343,10 +344,17 @@ position = Vector2(195, -10)
 scale = Vector2(1.7226, 2.66781)
 texture = ExtResource("4_3sx8m")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Attack" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.7
+
 [node name="UI" parent="." instance=ExtResource("7_glntq")]
+
+[node name="Claw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0yb4c")
+volume_db = -20.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
@@ -354,7 +362,8 @@ wait_time = 0.1
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="area_entered" from="MaleeAtk" to="MaleeAtk" method="_on_area_entered"]
 [connection signal="body_entered" from="MaleeAtk" to="." method="_on_malee_atk_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Attack" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 
 [editable path="MaleeAtk"]
 [editable path="UI"]

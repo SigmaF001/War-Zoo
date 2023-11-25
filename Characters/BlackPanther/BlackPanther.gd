@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 var player_is_atk = false
 var speed = 1
-var max_health = 50
+var max_health = 300
 var health = max_health
 
 func _ready():
@@ -52,6 +52,7 @@ func _on_hitbox_area_entered(area):
 
 func _on_hitbox_area_exited(area):
 	if area.is_in_group("PlayerAttack"):
+		animation_sprite.play("walk")
 		player_is_atk = false
 
 func take_damage():
@@ -61,12 +62,3 @@ func take_damage():
 func dying():
 	if health == 0:
 		queue_free()
-
-
-func _on_hitbox_body_entered(body):
-	if body.is_in_group("PlayerAttack"):
-		player_is_atk = true
-
-func _on_hitbox_body_exited(body):
-	if body.is_in_group("PlayerAttack"):
-		player_is_atk = false

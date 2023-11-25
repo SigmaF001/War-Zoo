@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4n6bk1rv6ovr"]
+[gd_scene load_steps=7 format=3 uid="uid://4n6bk1rv6ovr"]
 
 [ext_resource type="Script" path="res://Scence/MainMenu.gd" id="1_sx61p"]
 [ext_resource type="Texture2D" uid="uid://ccsste2vfrj0k" path="res://Asset/HOME.png" id="2_h4rsg"]
+[ext_resource type="AudioStream" uid="uid://ck21hj5vql3ue" path="res://Asset/Sounds/night-city-knight-127028.mp3" id="3_bvnl0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rc8ai"]
 atlas = ExtResource("2_h4rsg")
@@ -58,6 +59,12 @@ sprite_frames = SubResource("SpriteFrames_bef5s")
 animation = &"Play"
 frame = 1
 frame_progress = 0.536647
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bvnl0")
+volume_db = -15.429
+autoplay = true
+mix_target = 1
 
 [connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
