@@ -8,59 +8,6 @@
 radius = 74.0
 height = 336.0
 
-[sub_resource type="Animation" id="Animation_yq7al"]
-resource_name = "walk"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_x285b")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_sbstn"]
 length = 0.001
 tracks/0/type = "value"
@@ -151,6 +98,59 @@ tracks/2/keys = {
 "values": [Color(0.592157, 0.2, 0.180392, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yq7al"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_x285b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lejdc"]
 _data = {
 "RESET": SubResource("Animation_sbstn"),
@@ -165,7 +165,7 @@ height = 338.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbav2"]
 size = Vector2(67, 366)
 
-[node name="BlackPanther" type="CharacterBody2D" node_paths=PackedStringArray("blackpanther") groups=["BlackPanther"]]
+[node name="BlackPanther" type="CharacterBody2D" node_paths=PackedStringArray("blackpanther")]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yxb3l")
 blackpanther = NodePath(".")
@@ -175,6 +175,8 @@ texture = ExtResource("1_x285b")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-11, -3)
 shape = SubResource("CapsuleShape2D_umnxi")
 
@@ -184,9 +186,10 @@ libraries = {
 }
 
 [node name="SoftCollision" parent="." instance=ExtResource("3_v2baf")]
-visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-7, -5)
 shape = SubResource("CapsuleShape2D_n7mfi")
 
@@ -197,13 +200,19 @@ position = Vector2(-88.5, 3)
 shape = SubResource("RectangleShape2D_pbav2")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
+light_mask = 3
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-11, -3)
 shape = SubResource("CapsuleShape2D_umnxi")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 
 [editable path="SoftCollision"]

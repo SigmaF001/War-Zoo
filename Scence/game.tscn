@@ -17,6 +17,9 @@ limit_right = 2158
 [node name="CollisionShape2D" parent="world/Chincilla/MaleeAtk" index="0"]
 position = Vector2(120, -2.5)
 
+[node name="EnemySpawner" parent="world" index="2"]
+visible = true
+
 [node name="PausedMenuCanva" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_qou3q")]
 visible = false
 game_manager = NodePath("..")

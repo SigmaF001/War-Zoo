@@ -14,6 +14,12 @@ var health = max_health
 
 func _ready():
 	animation_sprite.play("walk")
+	PlayerAtk.connect("Player_Attack", took_damage)
+
+func took_damage(sender, took_damage):
+	print("damage")
+	animation_sprite.play("hurt")
+	health -= PlayerStatus.attack_damage
 
 func _process(delta):
 	var direction : Vector2 = (player.global_position - global_position).normalized()
@@ -54,4 +60,13 @@ func take_damage():
 
 func dying():
 	if health == 0:
-		get_parent().queue_free()
+		queue_free()
+
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("PlayerAttack"):
+		player_is_atk = true
+
+func _on_hitbox_body_exited(body):
+	if body.is_in_group("PlayerAttack"):
+		player_is_atk = false

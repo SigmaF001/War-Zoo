@@ -8,3 +8,6 @@ func _on_start_game_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+func _process(delta):
+	$AnimatedSprite2D.play("Play")

@@ -1,7 +1,5 @@
 extends Area2D
 
-var player_atk_dmg = 10
-
 func _process(delta):
 	look_at(get_global_mouse_position())
 

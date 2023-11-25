@@ -124,3 +124,7 @@ func _on_hitbox_area_exited(area):
 		enemy_attack_rang = false
 	if area.is_in_group("BlackPanther"):
 		blackpanther_attack = false
+
+
+func _on_malee_atk_body_entered(body):
+	pass
