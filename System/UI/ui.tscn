@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://caju51ksgt2q0"]
+[gd_scene load_steps=8 format=3 uid="uid://caju51ksgt2q0"]
 
 [ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="1_8bw3b"]
 [ext_resource type="PackedScene" uid="uid://b6lkean2vqgnx" path="res://System/UI/mana_bar.tscn" id="2_g32km"]
+[ext_resource type="Texture2D" uid="uid://7oqc83rj2gtf" path="res://Asset/UI/Tranformation.jpg" id="5_gsos6"]
 [ext_resource type="Texture2D" uid="uid://bsg2ah0j60j6j" path="res://Asset/UI/Attack.png" id="6_aous1"]
 [ext_resource type="Texture2D" uid="uid://d0fcmokm1qkco" path="res://Asset/UI/left_click.png" id="7_334qt"]
 
@@ -17,6 +18,7 @@ offset_left = 17.0
 offset_top = 17.0
 offset_right = 358.0
 offset_bottom = 51.0
+max_value = 500.0
 
 [node name="ManaBar" parent="." instance=ExtResource("2_g32km")]
 visible = false
@@ -40,3 +42,11 @@ texture = ExtResource("6_aous1")
 position = Vector2(1117, 608)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_334qt")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -63.0
+offset_top = -315.0
+offset_right = 1216.0
+offset_bottom = 964.0
+fill_mode = 4
+texture_progress = ExtResource("5_gsos6")

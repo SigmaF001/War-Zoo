@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var collision_hitbox = $Hitbox/CollisionShape2D
 @onready var attack_animation = $MaleeAtk/AnimationPlayer
 
-var max_health = 400
+var max_health = 500
 var health = max_health
 
 var max_mana = 100
