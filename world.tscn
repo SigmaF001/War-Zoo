@@ -3627,9 +3627,6 @@ process_mode = 1
 
 [node name="Chincilla" parent="." groups=["player"] instance=ExtResource("4_2dt1j")]
 
-[node name="Sprite2D" parent="Chincilla" index="0"]
-modulate = Color(1, 1, 1, 1)
-
 [node name="Camera2D" parent="Chincilla" index="3"]
 scale = Vector2(1, 1)
 limit_left = -2218

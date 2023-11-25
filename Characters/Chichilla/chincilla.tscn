@@ -326,7 +326,7 @@ shape = SubResource("CapsuleShape2D_cgm0p")
 [node name="MaleeAtk" parent="." groups=["PlayerAttack"] instance=ExtResource("8_08q0x")]
 
 [node name="CollisionShape2D" parent="MaleeAtk" index="0"]
-position = Vector2(155, -22.5)
+position = Vector2(193.469, -17.5)
 scale = Vector2(1, 1)
 disabled = true
 
@@ -336,7 +336,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="MaleeAtk"]
-position = Vector2(157.5, -15)
+position = Vector2(195, -10)
 scale = Vector2(1.7226, 2.66781)
 texture = ExtResource("4_3sx8m")
 

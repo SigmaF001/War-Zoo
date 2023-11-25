@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blcqhqujfhh60"
-path="res://.godot/imported/ยืนนิ่ง (chinchilla)3.png-4be282cd0e4921d3a2bbd83d71c07ec4.ctex"
+uid="uid://cqy3c0gttq442"
+path="res://.godot/imported/e_button.png-8a98a80f4a4d69d6809b88aee5f5862f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Chinchilla/ยืนนิ่ง (chinchilla)3.png"
-dest_files=["res://.godot/imported/ยืนนิ่ง (chinchilla)3.png-4be282cd0e4921d3a2bbd83d71c07ec4.ctex"]
+source_file="res://Asset/UI/e_button.png"
+dest_files=["res://.godot/imported/e_button.png-8a98a80f4a4d69d6809b88aee5f5862f.ctex"]
 
 [params]
 

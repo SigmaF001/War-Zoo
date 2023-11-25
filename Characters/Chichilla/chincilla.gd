@@ -31,6 +31,8 @@ func _ready():
 	mana_bar.max_value = max_mana
 	set_health_bar()
 	set_mana_bar()
+	$MaleeAtk/CollisionShape2D.position.x = 193.469
+	$MaleeAtk/CollisionShape2D.position.y = -17.5
 
 func set_health_bar():
 	health_bar.value = health

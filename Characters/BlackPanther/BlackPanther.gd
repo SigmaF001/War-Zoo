@@ -39,18 +39,17 @@ func facing_direction():
 
 
 func _on_hitbox_area_entered(area):
-	if (area.is_in_group("PlayerAttack")):
+	if area.is_in_group("PlayerAttack"):
 		animation_sprite.play("hurt")
 		player_is_atk = true
 
 
 func _on_hitbox_area_exited(area):
-	if (area.is_in_group("PlayerAttack")):
+	if area.is_in_group("PlayerAttack"):
 		player_is_atk = false
 
 func take_damage():
 	if player_is_atk:
-		animation_sprite.play("hurt")
 		health -= PlayerStatus.attack_damage
 
 func dying():
