@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var goblin_sprite : Sprite2D = $Sprite2D
 @onready var player_character = get_parent().get_parent().get_node("Chincilla")
 @onready var SoftCollision = $SoftCollision
-@onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
 
 @export var atk_damage : float = 15.0
 @export var goblin : CharacterBody2D
@@ -38,8 +37,7 @@ func facing_direction():
 		$Hitbox/CollisionShape2D.position.x = -11.6 
 	if (player_character.position.x > goblin.position.x):
 		goblin_sprite.flip_h = false
-		$Hitbox/CollisionShape2D.position.x = 11.6
-	pass 
+		$Hitbox/CollisionShape2D.position.x = 11.6 
 
 func _on_hitbox_body_entered(body):
 	pass

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://caju51ksgt2q0"]
+[gd_scene load_steps=9 format=3 uid="uid://caju51ksgt2q0"]
 
 [ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="1_8bw3b"]
 [ext_resource type="Texture2D" uid="uid://q5q8p4vtrxlu" path="res://Asset/UI/1494.jpg" id="2_0cp13"]
 [ext_resource type="PackedScene" uid="uid://b6lkean2vqgnx" path="res://System/UI/mana_bar.tscn" id="2_g32km"]
 [ext_resource type="Texture2D" uid="uid://cxdiygg4ahk4v" path="res://Asset/UI/1495.jpg" id="3_hly2d"]
 [ext_resource type="Texture2D" uid="uid://dk353dtxg2d5" path="res://Asset/UI/1492.jpg" id="4_pu40w"]
+[ext_resource type="Texture2D" uid="uid://bsg2ah0j60j6j" path="res://Asset/UI/Attack.png" id="6_aous1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08j8q"]
 
@@ -37,3 +38,16 @@ texture = ExtResource("3_hly2d")
 position = Vector2(281, 599)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_pu40w")
+
+[node name="SplitContainer" type="SplitContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="SplitContainer"]
+position = Vector2(-96, -96)
+texture = ExtResource("6_aous1")

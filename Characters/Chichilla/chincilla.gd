@@ -20,11 +20,12 @@ var mana = 0
 var enemy_attack_rang = false
 var enemy_attack_cooldown = true
 var player_alive = true
+var blackpanther_attack = false
 
 var direction : Vector2 = Vector2.ZERO
 
 func _ready():
-	animation_sprite.play("idle_side")
+	animation_sprite.play("idle")
 	attack_animation.play("none")
 	health_bar.max_value = max_health
 	mana_bar.max_value = max_mana
@@ -58,6 +59,8 @@ func _process(delta):
 func animation_movement():
 	if (direction != Vector2.ZERO):
 		animation_sprite.play("run")
+	if (direction == Vector2.ZERO):
+		animation_sprite.play("idle")
 
 
 func facing_direction():
@@ -71,17 +74,18 @@ func facing_direction():
 		collision_hitbox.position.x = 10
 
 func _on_hitbox_body_entered(body):
-	if body.is_in_group("Goblin"):
-		enemy_attack_rang = true
+	pass
 
 
 func _on_hitbox_body_exited(body):
-	if body.is_in_group("Goblin"):
-		enemy_attack_rang = false
+	pass
 
 func enemy_attack():
 	if enemy_attack_rang:
 		health -= 1
+	if blackpanther_attack:
+		health -= BlackPantherStatus.attack_damage
+		animation_sprite.play("hurt")
 
 func player_dead():
 	if health == 0:
@@ -104,3 +108,17 @@ func player_attack():
 func _on_timer_timeout():
 	malee_range.disabled = true
 	attack_animation.play("none")
+
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("Goblin"):
+		enemy_attack_rang = true
+	if area.is_in_group("BlackPanther"):
+		blackpanther_attack = true
+
+
+func _on_hitbox_area_exited(area):
+	if area.is_in_group("Goblin"):
+		enemy_attack_rang = false
+	if area.is_in_group("BlackPanther"):
+		blackpanther_attack = false

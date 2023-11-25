@@ -21,6 +21,8 @@ EnemySpawner="*res://System/enemy_spawner.gd"
 PlayerAtk="*res://System/Combat/PlayerATK.gd"
 AttackSignal="*res://System/Combat/Attack_Signal.gd"
 PlayerDead="*res://System/Combat/PlayerDead.gd"
+PlayerStatus="*res://Characters/Chichilla/player_status.gd"
+BlackPantherStatus="*res://Characters/BlackPanther/BlackPanther_Status.gd"
 
 [display]
 

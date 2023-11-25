@@ -12,7 +12,6 @@ script = ExtResource("1_ynvg5")
 [node name="world" parent="." instance=ExtResource("1_x1p1i")]
 
 [node name="Camera2D" parent="world/Chincilla" index="3"]
-scale = Vector2(1, 1)
 limit_right = 2158
 
 [node name="CollisionShape2D" parent="world/Chincilla/MaleeAtk" index="0"]

@@ -7,4 +7,3 @@ func _process(delta):
 
 func _on_area_entered(area: Area2D):
 	AttackSignal.emit_signal("Player_Attack")
-	area.get_parent().queue_free()
