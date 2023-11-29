@@ -134,4 +134,4 @@ func Tranformation():
 			pass
 	else:
 		if Input.is_action_just_pressed("Tranform"):
-			SignalBus.emit_signal("TranformCooldown")
+			SignalBus.emit_signal("TranformCooldown", self)

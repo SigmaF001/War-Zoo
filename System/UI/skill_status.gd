@@ -13,4 +13,3 @@ func _process(delta):
 func tranform_skill_cooldown(node : Node):
 	var label_instance : Label = skill_cooldown.instantiate()
 	node.add_child(label_instance)
-	print("Cooldown")

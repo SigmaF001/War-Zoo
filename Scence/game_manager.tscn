@@ -14,13 +14,16 @@ script = ExtResource("1_fc13y")
 [node name="world" parent="." instance=ExtResource("2_0nhx4")]
 
 [node name="Camera2D" parent="world/Chincilla" index="3"]
-scale = Vector2(1, 1)
 limit_right = 2158
 
 [node name="CollisionShape2D" parent="world/Chincilla/MaleeAtk" index="0"]
 position = Vector2(120, -2.5)
 
 [node name="SkillStatus" parent="world/Chincilla/UI" index="8" instance=ExtResource("3_l0k0m")]
+offset_left = -18.0
+offset_top = 49.0
+offset_right = 22.0
+offset_bottom = 89.0
 
 [node name="EnemySpawner" parent="world" index="2"]
 visible = true
