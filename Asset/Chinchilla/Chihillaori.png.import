@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7oqc83rj2gtf"
-path="res://.godot/imported/Tranformation.jpg-4cfceba7749e383cf19412cd7763e4db.ctex"
+uid="uid://ck5a63emblqkn"
+path="res://.godot/imported/Chihillaori.png-213c80073481608f8e20469b69013b69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/UI/Tranformation.jpg"
-dest_files=["res://.godot/imported/Tranformation.jpg-4cfceba7749e383cf19412cd7763e4db.ctex"]
+source_file="res://Asset/Chinchilla/Chihillaori.png"
+dest_files=["res://.godot/imported/Chihillaori.png-213c80073481608f8e20469b69013b69.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1n5e1bj1dokh"
-path="res://.godot/imported/walk_up.png-ac0e16498f274aa0d2e2e3186ddfe801.ctex"
+uid="uid://byuvia1crggwy"
+path="res://.godot/imported/1501.jpg-8e824876ab679d5f6bf6308abccdd4ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Chinchilla/walk_up.png"
-dest_files=["res://.godot/imported/walk_up.png-ac0e16498f274aa0d2e2e3186ddfe801.ctex"]
+source_file="res://Asset/UI/1501.jpg"
+dest_files=["res://.godot/imported/1501.jpg-8e824876ab679d5f6bf6308abccdd4ee.ctex"]
 
 [params]
 

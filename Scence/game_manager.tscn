@@ -1,19 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://cvnl3cl6brqra"]
 
-[ext_resource type="PackedScene" uid="uid://dg463224bexfl" path="res://world.tscn" id="1_x1p1i"]
-[ext_resource type="Script" path="res://Scence/game_manager.gd" id="1_ynvg5"]
-[ext_resource type="PackedScene" uid="uid://yhwy86pnglwa" path="res://System/UI/paused_menu_canva.tscn" id="3_qou3q"]
-[ext_resource type="PackedScene" uid="uid://cm5pt6sxyy1s6" path="res://System/UI/dead_menu.tscn" id="4_cil80"]
-[ext_resource type="AudioStream" uid="uid://bgfnxshmsgy66" path="res://Asset/Sounds/start-the-engine-21180.mp3" id="5_xo7k8"]
+[ext_resource type="Script" path="res://Scence/game_manager.gd" id="1_fc13y"]
+[ext_resource type="PackedScene" uid="uid://dg463224bexfl" path="res://Scence/world.tscn" id="2_0nhx4"]
+[ext_resource type="PackedScene" uid="uid://yhwy86pnglwa" path="res://System/UI/paused_menu_canva.tscn" id="3_dovoi"]
+[ext_resource type="PackedScene" uid="uid://cm5pt6sxyy1s6" path="res://System/UI/dead_menu.tscn" id="4_7lc6a"]
+[ext_resource type="AudioStream" uid="uid://bgfnxshmsgy66" path="res://Asset/Sounds/start-the-engine-21180.mp3" id="5_ujgop"]
 
 [node name="GameManager" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_ynvg5")
+script = ExtResource("1_fc13y")
 
-[node name="world" parent="." instance=ExtResource("1_x1p1i")]
+[node name="world" parent="." instance=ExtResource("2_0nhx4")]
 
 [node name="Camera2D" parent="world/Chincilla" index="3"]
-scale = Vector2(1, 1)
 limit_right = 2158
 
 [node name="CollisionShape2D" parent="world/Chincilla/MaleeAtk" index="0"]
@@ -22,19 +21,19 @@ position = Vector2(120, -2.5)
 [node name="EnemySpawner" parent="world" index="2"]
 visible = true
 
-[node name="PausedMenuCanva" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_qou3q")]
+[node name="PausedMenuCanva" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_dovoi")]
 visible = false
 game_manager = NodePath("..")
 
 [node name="Label" parent="PausedMenuCanva/VBoxContainer" index="0"]
 theme_override_font_sizes/font_size = 40
 
-[node name="DeadMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("4_cil80")]
+[node name="DeadMenu" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("4_7lc6a")]
 visible = false
 game_manager = NodePath("..")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_xo7k8")
+stream = ExtResource("5_ujgop")
 volume_db = -30.0
 autoplay = true
 

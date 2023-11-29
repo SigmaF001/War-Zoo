@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://caju51ksgt2q0"]
+[gd_scene load_steps=13 format=3 uid="uid://caju51ksgt2q0"]
 
 [ext_resource type="PackedScene" uid="uid://bwhqf7jkko70p" path="res://System/player_health_bar.tscn" id="1_8bw3b"]
+[ext_resource type="Script" path="res://System/UI/UI.gd" id="1_vcbk3"]
 [ext_resource type="PackedScene" uid="uid://b6lkean2vqgnx" path="res://System/UI/mana_bar.tscn" id="2_g32km"]
-[ext_resource type="Texture2D" uid="uid://7oqc83rj2gtf" path="res://Asset/UI/Tranformation.jpg" id="5_gsos6"]
+[ext_resource type="Texture2D" uid="uid://bxa87uh1ac0di" path="res://Asset/UI/Tranformation-sheet_cooldown.png" id="5_q2c6c"]
+[ext_resource type="Texture2D" uid="uid://b4ty1ixhy80ef" path="res://Asset/UI/SuperPunch_cooldown.png" id="6_4e2re"]
 [ext_resource type="Texture2D" uid="uid://bsg2ah0j60j6j" path="res://Asset/UI/Attack.png" id="6_aous1"]
+[ext_resource type="Texture2D" uid="uid://q5q8p4vtrxlu" path="res://Asset/UI/1494.jpg" id="6_dxc0p"]
+[ext_resource type="Texture2D" uid="uid://o6fp2voktyqx" path="res://Asset/UI/q_button.png" id="7_3pj8o"]
 [ext_resource type="Texture2D" uid="uid://d0fcmokm1qkco" path="res://Asset/UI/left_click.png" id="7_334qt"]
+[ext_resource type="Texture2D" uid="uid://de3cstv6wwwh1" path="res://Asset/UI/Tranformation.png" id="7_r0eeh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08j8q"]
 
@@ -12,6 +17,7 @@
 bg_color = Color(0.101961, 0.662745, 0.807843, 1)
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_vcbk3")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_8bw3b")]
 offset_left = 17.0
@@ -21,7 +27,6 @@ offset_bottom = 51.0
 max_value = 500.0
 
 [node name="ManaBar" parent="." instance=ExtResource("2_g32km")]
-visible = false
 theme_override_styles/background = SubResource("StyleBoxFlat_08j8q")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4oicm")
 
@@ -43,10 +48,46 @@ position = Vector2(1117, 608)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_334qt")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -63.0
-offset_top = -315.0
-offset_right = 1216.0
-offset_bottom = 964.0
+[node name="TranformButton" type="TextureProgressBar" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -559.0
+offset_top = 503.0
+offset_right = 720.0
+offset_bottom = 1134.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 0
 fill_mode = 4
-texture_progress = ExtResource("5_gsos6")
+texture_under = ExtResource("5_q2c6c")
+texture_progress = ExtResource("7_r0eeh")
+
+[node name="TranformCooldown" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="SuperPunch" type="TextureProgressBar" parent="."]
+offset_left = 196.0
+offset_top = 516.0
+offset_right = 1348.0
+offset_bottom = 1650.0
+scale = Vector2(0.1, 0.1)
+max_value = 20.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("6_4e2re")
+texture_progress = ExtResource("6_dxc0p")
+
+[node name="QButton" type="Sprite2D" parent="."]
+position = Vector2(307, 615)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_3pj8o")
+
+[node name="SuperPunchCooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="TranformCooldown" to="." method="_on_tranform_cooldown_timeout"]
+[connection signal="timeout" from="SuperPunchCooldown" to="." method="_on_super_punch_cooldown_timeout"]

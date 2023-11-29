@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://t5m3mxglm31b"]
+[gd_scene load_steps=19 format=3 uid="uid://t5m3mxglm31b"]
 
 [ext_resource type="Script" path="res://Characters/Chichilla/chincilla.gd" id="1_wegq6"]
 [ext_resource type="Texture2D" uid="uid://ietfbis60ogi" path="res://Asset/Chinchilla/chichillaori-Sheet.png" id="2_lt44m"]
+[ext_resource type="Texture2D" uid="uid://djih87x1aaenh" path="res://Asset/Chinchilla/chichillaori_walk.png" id="3_s7ccs"]
 [ext_resource type="Texture2D" uid="uid://c8nr7tbtj0mnq" path="res://Asset/Combat/Claw.png" id="4_3sx8m"]
 [ext_resource type="AudioStream" uid="uid://bpqkjgaeshfu3" path="res://Asset/Sounds/knife-slice-41231.mp3" id="6_0yb4c"]
 [ext_resource type="PackedScene" uid="uid://caju51ksgt2q0" path="res://System/UI/ui.tscn" id="7_glntq"]
@@ -75,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_lt44m")]
+"values": [ExtResource("3_s7ccs")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,7 +103,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_lt44m")]
+"values": [ExtResource("3_s7ccs")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -140,10 +141,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [ExtResource("2_lt44m")]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
