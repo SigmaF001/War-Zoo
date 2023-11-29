@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var collision_sprite = $CollisionShape2D
 @onready var collision_hitbox = $Hitbox/CollisionShape2D
 @onready var attack_animation = $MaleeAtk/AnimationPlayer
+@onready var tranform = $UI/TranformButton
+@onready var superpunch_skill = $UI/SuperPunch
 
 var max_health = 500
 var health = max_health
@@ -57,7 +59,7 @@ func _process(delta):
 	player_dead()
 	charge_mana()
 	set_mana_bar()
-
+	Tranformation()
 
 func animation_movement():
 	if (direction != Vector2.ZERO):
@@ -75,13 +77,6 @@ func facing_direction():
 		sprite.flip_h = true
 		collision_sprite.position.x = 10
 		collision_hitbox.position.x = 10
-
-func _on_hitbox_body_entered(body):
-	pass
-
-
-func _on_hitbox_body_exited(body):
-	pass
 
 func enemy_attack():
 	if enemy_attack_rang:
@@ -130,9 +125,13 @@ func _on_hitbox_area_exited(area):
 		blackpanther_attack = false
 
 
-func _on_malee_atk_body_entered(body):
-	pass
-
-
 func _on_cooldown_timeout():
 	attack_cooldown = false
+
+func Tranformation():
+	if tranform.value == 100:
+		if Input.is_action_just_pressed("Tranform"):
+			pass
+	else:
+		if Input.is_action_just_pressed("Tranform"):
+			SignalBus.emit_signal("TranformCooldown")
